@@ -1,6 +1,6 @@
 # Take Pateela
 
-FROM python:3.14
+FROM python:3.13-slim
 
 # Add ingredients
 

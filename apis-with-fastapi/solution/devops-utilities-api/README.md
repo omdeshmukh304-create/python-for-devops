@@ -17,7 +17,7 @@ cd devops-utilities-api
 
 ### setup python environment
 ```bash
-python3.14 -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 

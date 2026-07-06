@@ -2,15 +2,12 @@ import psutil
 
 
 def get_system_metrics():
-    """
-        This API gets the System Metrics(CPU, Memory, Disk, System Health)
-        Based on a CPU Threshold i.e 10 (Configurable)
-    """
+    """Read CPU, memory and disk usage, and flag high CPU against a threshold."""
     cpu_percent = psutil.cpu_percent(interval=1)
     memory_percent = psutil.virtual_memory().percent
     disk_percent = psutil.disk_usage("/").percent
 
-    cpu_threshold = 10
+    cpu_threshold = 85
 
     status = "High CPU" if cpu_percent > cpu_threshold else "Healthy"
 
