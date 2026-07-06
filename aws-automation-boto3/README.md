@@ -4,26 +4,17 @@ AWS is managed with APIs, not clicks. This module shows how Python automates the
 cloud with Boto3 (read-only here), plus an intro to Infrastructure as Code with
 AWS CDK.
 
-The examples only read from AWS (list S3 buckets, list EC2 instances). Nothing
-is created, modified, or deleted unless you choose to run the optional create
+The scripts only read from AWS (list S3 buckets, list EC2 instances). Nothing is
+created, modified, or deleted unless you choose to run the optional create
 helpers.
-
----
-
-## Learning objectives
-
-- Connect to AWS from Python using [`boto3`](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
-- List S3 buckets and EC2 instances, and save a report to JSON
-- Understand when to use Boto3 (glue/reporting) vs. IaC tools (Terraform/CloudFormation) for CRUD
-- Understand the idea of Infrastructure as Code with AWS CDK (Python)
 
 ## Prerequisites
 
-- An AWS account with credentials configured locally:
-  ```bash
-  aws configure          # or set AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY / AWS_DEFAULT_REGION
-  ```
-  Guide: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+AWS credentials configured locally:
+
+```bash
+aws configure   # or set AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY / AWS_DEFAULT_REGION
+```
 
 ## Setup
 
@@ -33,43 +24,34 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## What's inside
+## Files
 
-```
-aws-automation-boto3/
-├── examples/
-│   ├── s3_utilities.py         # AWSUtils class: list buckets, (optional) create/upload
-│   ├── aws_resource_report.py  # list S3 + EC2 and write aws_report.json
-│   └── cdk_demo/               # IaC intro: a CDK stack defining one S3 bucket
-│       ├── app.py
-│       └── README.md
-├── practice/
-│   ├── aws_resource_report.py
-│   └── README.md
-└── solution/
-    └── aws_resource_report.py
-```
-
-## How to run
+- `s3_utilities.py` — `AWSUtils` class: list buckets, optional create/upload
+- `aws_resource_report.py` — list S3 + EC2 and write `aws_report.json`
+- `cdk_demo/` — an Infrastructure-as-Code example: a CDK stack with one S3 bucket
 
 ```bash
-# List your S3 buckets + EC2 instances and write a JSON report
-python examples/aws_resource_report.py
-
-# Just the S3 helper class
-python examples/s3_utilities.py
+python aws_resource_report.py
+python s3_utilities.py
 ```
 
-These call real AWS APIs and need valid credentials. Without them you'll get a
-`NoCredentialsError` / `ClientError` — that's expected.
+These call real AWS APIs and need valid credentials — without them you'll get a
+`NoCredentialsError` / `ClientError`, which is expected.
 
-## Boto3 vs. Infrastructure as Code
+## Boto3 vs Infrastructure as Code
 
-- Boto3 is great for reading state, reporting, and one-off automation.
-- For creating/updating/deleting infrastructure, prefer IaC tools (Terraform,
-  CloudFormation, CDK) — they track state, are repeatable, and reviewable. See
-  [`examples/cdk_demo/`](examples/cdk_demo/) for the CDK idea.
+Boto3 is great for reading state, reporting, and one-off automation. For
+creating/updating/deleting infrastructure, prefer IaC tools (Terraform,
+CloudFormation, CDK) — they track state and are repeatable. See `cdk_demo/`.
 
 ## Practice
 
-See [`practice/README.md`](practice/README.md).
+Write an AWS resource report:
+
+1. Create a `boto3.Session()` and an S3 client, and list all bucket names.
+2. List EC2 instances (instance id + state).
+3. Print the report and save it to `aws_report.json`.
+4. Bonus: wrap the calls in `try / except (BotoCoreError, ClientError)` so
+   missing credentials print a friendly message instead of a traceback.
+
+Read-only only — don't create or delete resources.
