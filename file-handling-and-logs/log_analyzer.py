@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 LEVELS = ("INFO", "WARNING", "ERROR")
-LOG_FILE = Path(__file__).parent.parent / "app.log"
+LOG_FILE = Path(__file__).parent / "app.log"
 
 
 def read_lines(path):

@@ -1,70 +1,36 @@
 # Python Foundations for DevOps
 
-This module covers the Python fundamentals you actually need for automation —
-variables, data types, conditionals, loops, and functions — and puts them to
-work in a real DevOps script: a system health checker that reads CPU, memory,
-and disk usage and compares them against thresholds.
+The Python fundamentals you actually need for automation — variables, data
+types, conditionals, loops, and functions — used to build a real DevOps script:
+a system health checker that reads CPU, memory, and disk usage and compares them
+against thresholds.
 
-It also folds in habits worth building early: `try/except` error handling,
-clean functions, and PEP 8 readable code.
+## What you'll learn
 
----
-
-## Learning objectives
-
-By the end of this module you will be able to:
-
-- Use variables, core data types (`int`, `float`, `bool`, `str`), and operators
-- Take input from the user and type-cast it safely
-- Make decisions with `if / elif / else`
-- Repeat work with `for` and `while` loops
-- Organize logic into functions
-- Read live system metrics with the [`psutil`](https://pypi.org/project/psutil/) library
-- Handle errors gracefully with `try / except`
-
----
-
-## Prerequisites
-
-- Python 3.10+ installed (`python3 --version`)
-- Basic terminal familiarity
+- Variables, data types, operators, and type casting
+- `if / elif / else`, `for` and `while` loops
+- Writing functions
+- Reading live system metrics with [`psutil`](https://pypi.org/project/psutil/)
+- Basic `try / except` error handling
 
 ## Setup
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
+## Files
 
-## What's inside
-
-```
-python-foundations/
-├── examples/                     # Read + run these first (instructor demos)
-│   ├── 01_variables_and_types.py
-│   ├── 02_control_flow.py
-│   ├── 03_functions.py
-│   └── system_health.py          # the main one: CPU/memory/disk health check
-├── practice/                     # Your turn — fill in the TODOs
-│   ├── system_health.py
-│   └── README.md
-└── solution/                     # Worked answer (peek only after trying!)
-    └── system_health.py
-```
-
-## How to run
+- `variables.py` — variables, data types, operators
+- `control_flow.py` — if/else and loops
+- `functions.py` — functions
+- `system_health.py` — the main one: CPU/memory/disk health report
 
 ```bash
-# Explore the building blocks
-python examples/01_variables_and_types.py
-python examples/02_control_flow.py
-python examples/03_functions.py
-
-# Run the real DevOps script
-python examples/system_health.py
+python variables.py
+python system_health.py
 ```
 
 `system_health.py` prints something like:
@@ -77,15 +43,13 @@ Disk   : 78.0%  -> WARNING (above 75%)
 Overall: NEEDS ATTENTION
 ```
 
----
-
-## Why this matters
-
-DevOps engineers constantly write small scripts to check server health, validate
-conditions, and generate reports. Everything else in this course builds on these
-fundamentals.
-
 ## Practice
 
-Open [`practice/README.md`](practice/README.md) and complete
-`practice/system_health.py`. Compare with `solution/` when you're done.
+Write your own `system_health.py` from scratch:
+
+1. Ask the user for a CPU threshold with `input()` and cast it to a number.
+2. Read current CPU usage with `psutil.cpu_percent(interval=1)`.
+3. Print whether the CPU is healthy or over the threshold.
+4. Bonus: also check memory (`psutil.virtual_memory().percent`) and disk
+   (`psutil.disk_usage("/").percent`).
+5. Bonus: wrap the input in `try / except ValueError` so bad input doesn't crash it.

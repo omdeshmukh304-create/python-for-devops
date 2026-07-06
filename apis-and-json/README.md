@@ -2,23 +2,15 @@
 
 Clouds, Kubernetes, monitoring and CI/CD all speak HTTP and JSON, so calling
 APIs is a big part of DevOps automation. This module covers how to call them and
-handle their data in Python.
+handle their data in Python with the [`requests`](https://docs.python-requests.org/)
+library.
 
-You'll use the [`requests`](https://docs.python-requests.org/) library to call
-public APIs, parse the JSON responses, extract what you need with dictionaries
-and lists, and save results to a JSON file.
+## What you'll learn
 
----
-
-## Learning objectives
-
-- Call a public API with `requests.get()`
-- Parse a JSON response with `.json()`
-- Work with Python collections: `list`, `dict`, `set`
-- Read from and write to files (including `json.dump` / `json.load`)
-- Keep secrets (API keys) out of source code using environment variables
-
----
+- Call a public API with `requests.get()` and parse JSON with `.json()`
+- Work with `list`, `dict`, and `set`
+- Read and write files, including JSON
+- Keep API keys out of source code using environment variables
 
 ## Setup
 
@@ -28,40 +20,33 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## What's inside
+## Files
 
-```
-apis-and-json/
-├── examples/
-│   ├── collections_demo.py     # list / dict / set essentials
-│   ├── call_api.py             # JSONPlaceholder: fetch + filter todos
-│   ├── jokes_api.py            # switching between multiple endpoints + headers
-│   ├── file_io.py              # read + write text and JSON files
-│   └── stock_market_api.py     # real API using an env-var API key (no secrets!)
-├── practice/
-│   ├── github_user.py          # fetch a GitHub user and save to JSON
-│   └── README.md
-└── solution/
-    └── github_user.py
-```
-
-## How to run
+- `collections_demo.py` — list / dict / set basics
+- `call_api.py` — fetch and filter a JSONPlaceholder todo
+- `jokes_api.py` — switch between two endpoints at runtime
+- `file_io.py` — read/write text and JSON files
+- `stock_market_api.py` — a real API using a key from an env var
 
 ```bash
-python examples/collections_demo.py
-python examples/call_api.py
-python examples/jokes_api.py
-python examples/file_io.py
+python collections_demo.py
+python call_api.py
 
-# stock_market_api needs a free Alpha Vantage key (see below)
+# stock_market_api needs a free Alpha Vantage key
 export ALPHAVANTAGE_API_KEY="your_key_here"
-python examples/stock_market_api.py
+python stock_market_api.py
 ```
 
-Never hardcode API keys in source. `stock_market_api.py` reads the key from the
-`ALPHAVANTAGE_API_KEY` environment variable. Get a free key at
+Never hardcode API keys in source — `stock_market_api.py` reads the key from
+`ALPHAVANTAGE_API_KEY`. Get a free key at
 https://www.alphavantage.co/support/#api-key
 
 ## Practice
 
-Complete `practice/github_user.py` — see [`practice/README.md`](practice/README.md).
+Fetch a GitHub user and save it to JSON:
+
+1. Call `https://api.github.com/users/<username>`.
+2. Print `name`, `public_repos`, `followers`, `location`.
+3. Save the full response to `github_user.json` with `json.dump(..., indent=2)`.
+4. Bonus: handle a non-existent user (GitHub returns 404) with
+   `response.raise_for_status()` inside a `try / except`.
