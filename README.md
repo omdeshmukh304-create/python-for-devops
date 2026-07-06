@@ -25,22 +25,22 @@ section to try yourself, and any sample data it needs.
 Recommended learning path (each module stands alone, but this order builds
 naturally):
 
-| # | Module | You'll learn |
-|---|--------|--------------|
-| 1 | [python-foundations](python-foundations/) | Variables, control flow, functions, `psutil` system health |
-| 2 | [apis-and-json](apis-and-json/) | `requests`, JSON, dict/list/set, file I/O, env-var secrets |
-| 3 | [file-handling-and-logs](file-handling-and-logs/) | Reading files, counting log levels, writing summaries |
-| 4 | [object-oriented-python](object-oriented-python/) | Practical OOP — the log analyzer as a class |
-| 5 | [cli-tools-argparse](cli-tools-argparse/) | Real CLI tools with `argparse` |
-| 6 | [aws-automation-boto3](aws-automation-boto3/) | Boto3 (read-only), AWS reporting, IaC intro with CDK |
-| 7 | [apis-with-fastapi](apis-with-fastapi/) | Internal DevOps APIs with FastAPI + uvicorn |
-| 8 | [ai-agents-for-devops](ai-agents-for-devops/) | Local AI agents: LangGraph + LangChain + Ollama |
-| — | [capstone](capstone/) | Assemble it all into one interview-ready project |
-| — | [guides](guides/) | Design thinking, S.T.A.R interviews, DevOps mindset |
+| Module | You'll learn |
+|--------|--------------|
+| [01-python-foundations](01-python-foundations/) | Variables, control flow, functions, `psutil` system health |
+| [02-apis-and-json](02-apis-and-json/) | `requests`, JSON, dict/list/set, file I/O, env-var secrets |
+| [03-file-handling-and-logs](03-file-handling-and-logs/) | Reading files, counting log levels, writing summaries |
+| [04-object-oriented-python](04-object-oriented-python/) | Practical OOP — the log analyzer as a class |
+| [05-cli-tools-argparse](05-cli-tools-argparse/) | Real CLI tools with `argparse` |
+| [06-aws-automation-boto3](06-aws-automation-boto3/) | Boto3 (read-only), AWS reporting, IaC intro with CDK |
+| [07-apis-with-fastapi](07-apis-with-fastapi/) | Internal DevOps APIs with FastAPI + uvicorn |
+| [08-ai-agents-for-devops](08-ai-agents-for-devops/) | Local AI agents: LangGraph + LangChain + Ollama |
+| [capstone](capstone/) | Assemble it all into one interview-ready project |
+| [guides](guides/) | Design thinking, S.T.A.R interviews, DevOps mindset |
 
 Each module keeps whatever structure fits it: the smaller topics are just a
-README plus a script or two, while the bigger ones (`apis-with-fastapi`,
-`ai-agents-for-devops`) are full project folders. Every module's README has a
+README plus a script or two, while the bigger ones (`07-apis-with-fastapi`,
+`08-ai-agents-for-devops`) are full project folders. Every module's README has a
 Practice section with something to build yourself.
 
 ---
@@ -71,24 +71,24 @@ source venv/bin/activate          # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # option B: install just one module's deps
-pip install -r python-foundations/requirements.txt
+pip install -r 01-python-foundations/requirements.txt
 ```
 
 Then open any module's `README.md` and follow along.
 
 The AI agents module additionally needs [Ollama](https://ollama.com) running
 locally with `llama3.2` pulled — see
-[ai-agents-for-devops/README.md](ai-agents-for-devops/README.md).
+[08-ai-agents-for-devops/README.md](08-ai-agents-for-devops/README.md).
 
 ---
 
 ## Projects included
 
-- System Health Monitor — CPU / memory / disk checks (`python-foundations`)
-- Log Analyzer — script to OOP to CLI (`file-handling-and-logs`, `object-oriented-python`, `cli-tools-argparse`)
-- AWS Resource Report — read-only S3 / EC2 reporting (`aws-automation-boto3`)
-- Internal DevOps Utilities API — FastAPI service exposing metrics, logs and AWS info (`apis-with-fastapi`)
-- Local Log Analysis Agent — LangGraph + Ollama AI agent (`ai-agents-for-devops`)
+- System Health Monitor — CPU / memory / disk checks (`01-python-foundations`)
+- Log Analyzer — script to OOP to CLI (`03-file-handling-and-logs`, `04-object-oriented-python`, `05-cli-tools-argparse`)
+- AWS Resource Report — read-only S3 / EC2 reporting (`06-aws-automation-boto3`)
+- Internal DevOps Utilities API — FastAPI service exposing metrics, logs and AWS info (`07-apis-with-fastapi`)
+- Local Log Analysis Agent — LangGraph + Ollama AI agent (`08-ai-agents-for-devops`)
 - Capstone — one clean end-to-end flow tying it together (`capstone`)
 
 ---

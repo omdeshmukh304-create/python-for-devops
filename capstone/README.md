@@ -11,29 +11,29 @@ interview-ready.
 Every module in this course builds one capability. The capstone assembles them:
 
 ```
-   log analysis          ->  file-handling-and-logs  +  object-oriented-python
+   log analysis          ->  03-file-handling-and-logs  +  04-object-oriented-python
         |
-   run it as a CLI        ->  cli-tools-argparse
+   run it as a CLI        ->  05-cli-tools-argparse
         |
-   pull in cloud data     ->  aws-automation-boto3
+   pull in cloud data     ->  06-aws-automation-boto3
         |
-   expose it as an API    ->  apis-with-fastapi
+   expose it as an API    ->  07-apis-with-fastapi
         |
-   add an AI layer         ->  ai-agents-for-devops   (optional, impressive)
+   add an AI layer         ->  08-ai-agents-for-devops   (optional, impressive)
 ```
 
 ## What to build
 
 Pick a scope and make it clean, commented, and runnable:
 
-- Minimum: the log analyzer as a CLI tool (`cli-tools-argparse`) that writes a
+- Minimum: the log analyzer as a CLI tool (`05-cli-tools-argparse`) that writes a
   JSON summary.
 - Solid: wrap the log analyzer + system metrics in a FastAPI service
-  (`apis-with-fastapi`) with `/health`, `/logs`, `/metrics`.
+  (`07-apis-with-fastapi`) with `/health`, `/logs`, `/metrics`.
 - Impressive: add the AWS report endpoint and/or the local AI log agent.
 
 The reference implementation of the "Solid + AWS" tier already lives in
-[`../apis-with-fastapi/devops-utilities-api`](../apis-with-fastapi/devops-utilities-api).
+[`../07-apis-with-fastapi/devops-utilities-api`](../07-apis-with-fastapi/devops-utilities-api).
 Use it as your starting point, or build your own.
 
 ## Deliverables

@@ -3,7 +3,7 @@
 Automation scripts grow into tools, and tools need structure. This module
 refactors the log analyzer into a class — the way a lot of internal DevOps tools
 are built. Same behaviour as
-[file-handling-and-logs](../file-handling-and-logs), now with state in
+[03-file-handling-and-logs](../03-file-handling-and-logs), now with state in
 `__init__` and behaviour in methods. Light, practical OOP — no inheritance or
 abstract classes.
 
