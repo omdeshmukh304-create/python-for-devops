@@ -79,16 +79,28 @@ running the live calls.
 
 ## 7. Check it works
 
+Run the environment check — it verifies your Python version, every course
+package, and whether Ollama is ready:
+
 ```bash
-# a pure-Python module (no installs): should print INFO=10, WARNING=2, ERROR=3
+python check_setup.py
+```
+
+You want every line to read `[ok]`. Anything marked `[!!]` needs fixing (usually
+`pip install -r requirements.txt`); `[..]` lines are optional and only matter for
+module 08.
+
+Want to see real code run? These two work with no extra setup:
+
+```bash
+# should print INFO=10, WARNING=2, ERROR=3
 python 03-file-handling-and-logs/log_analyzer.py
 
 # the agent's tests (no Ollama needed): should pass
 cd 08-ai-agents-for-devops && python -m pytest . && cd ..
 ```
 
-If both of those work, you're ready. Start with
-[`01-python-foundations`](01-python-foundations/).
+You're ready — start with [`01-python-foundations`](01-python-foundations/).
 
 ## Troubleshooting
 
