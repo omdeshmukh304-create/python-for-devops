@@ -8,6 +8,9 @@ engineer using Python. The course is organized into topic modules (not days),
 so you can follow it live, watch it recorded, or jump straight to the topic you
 need.
 
+New here? Read [START-HERE.md](START-HERE.md), then set up your machine with
+[SETUP.md](SETUP.md).
+
 ---
 
 ## Objective
